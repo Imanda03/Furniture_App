@@ -7,11 +7,11 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './styles';
+import React, { useState } from 'react';
+import { styles } from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {colors} from '../../utils/color';
+import { colors } from '../../utils/color';
 
 interface InputProps {
   label?: string;

@@ -31,7 +31,7 @@ const SignIn = ({ navigation }: any) => {
         <Button
           style={styles.button}
           title="Sign In"
-          onPress={console.log('pressed')}
+          onPress={() => console.log('clicked')}
         />
 
         <Seperator title="Or sign up with" />

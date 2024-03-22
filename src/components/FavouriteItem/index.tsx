@@ -1,8 +1,8 @@
-import {View, Text, Pressable, Image} from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './styles';
+import { View, Text, Pressable, Image } from 'react-native';
+import React, { useState } from 'react';
+import { styles } from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {colors} from '../../utils/color';
+import { colors } from '../../utils/color';
 
 interface HeaderProps {
   title: string;
@@ -10,6 +10,7 @@ interface HeaderProps {
   price: string;
   onPress?: () => void;
   icon?: any;
+  onIconClick?: () => void;
 }
 
 const FavouriteItem: React.FC<HeaderProps> = ({
@@ -18,10 +19,11 @@ const FavouriteItem: React.FC<HeaderProps> = ({
   onPress,
   price,
   icon,
+  onIconClick,
 }) => {
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Image style={styles.image} source={{uri: image}} />
+      <Image style={styles.image} source={{ uri: image }} />
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.price}>{price}</Text>
@@ -32,6 +34,7 @@ const FavouriteItem: React.FC<HeaderProps> = ({
         name={icon || 'circle-with-cross'}
         size={24}
         color={colors.blue}
+        onPress={onIconClick}
       />
     </Pressable>
   );

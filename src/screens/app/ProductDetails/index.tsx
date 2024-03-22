@@ -1,27 +1,37 @@
-import {Image, Pressable, ScrollView, Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {styles} from './styles';
+import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { styles } from './styles';
 import Button from '../../../components/Button';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ImageCarsousel from '../../../components/ImageCarsousel';
-import {Linking} from 'react-native';
-import {colors} from '../../../utils/color';
+import { Linking } from 'react-native';
+import { colors } from '../../../utils/color';
+import { useState } from 'react';
+import Modal from 'react-native-modal'
 
-const ProductDetails = ({route, navigation}: any) => {
+const ProductDetails = ({ route, navigation }: any) => {
   const product = route?.params?.product || {};
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   const onBackPress = () => {
     navigation.goBack();
   };
 
   const onContact = () => {
+    setIsModalVisible(true);
+  };
+
+  const forPhone = () => {
     //Make a phone call
     const phone = '+9779803708637';
     Linking.openURL(`tel: ${phone}`);
+    setIsModalVisible(false);
+  };
 
-    //Send a email
+  const forMail = () => {
     const email = 'asis03ktm@gmail.com';
     Linking.openURL(`mailto: ${email}`);
+    setIsModalVisible(false);
   };
   return (
     <SafeAreaView style={styles.safe}>
@@ -29,7 +39,7 @@ const ProductDetails = ({route, navigation}: any) => {
         {product?.images?.length ? (
           <ImageCarsousel images={product.images} />
         ) : (
-          <Image style={styles.Image} source={{uri: product.image}} />
+          <Image style={styles.Image} source={{ uri: product.image }} />
         )}
 
         <View style={styles.content}>
@@ -47,7 +57,17 @@ const ProductDetails = ({route, navigation}: any) => {
         </Pressable>
         <Button onPress={onContact} title="Contact Seller" />
       </View>
-    </SafeAreaView>
+      <Modal
+        isVisible={isModalVisible}
+        animationIn={'slideInUp'}
+        animationOut={'slideOutDown'}
+      >
+        <View style={{ width: '100%', flexDirection: 'row', gap: 15 }}>
+          <Button style={{}} onPress={forPhone} title="From Phone" />
+          <Button style={{}} onPress={forPhone} title="From Email" />
+        </View>
+      </Modal>
+    </SafeAreaView >
   );
 };
 

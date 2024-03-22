@@ -1,7 +1,7 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {colors} from '../../../utils/color';
+import { Dimensions, StyleSheet } from 'react-native';
+import { colors } from '../../../utils/color';
 
-const {height} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   safe: {
@@ -56,4 +56,23 @@ export const styles = StyleSheet.create({
     marginRight: 16,
     position: 'absolute',
   },
+
+  btnContainer: {
+    padding: 25,
+    gap: 5
+  },
+  modalContainer: {
+    padding: 2,
+    // margin: 4,
+    borderRadius: 8,
+    marginRight: 24,
+    marginLeft: 24,
+  },
+  orText: {
+    margin: 10,
+    fontSize: 24,
+    fontWeight: '500',
+    color: colors.white,
+    textAlign: 'center'
+  }
 });

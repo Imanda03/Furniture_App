@@ -9,14 +9,14 @@ import {
   Image,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Header from '../../../components/Header';
-import {styles} from './styles';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { styles } from './styles';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {colors} from '../../../utils/color';
+import { colors } from '../../../utils/color';
 import Input from '../../../components/Input';
-import {categories} from '../../../data/categories';
+import { categories } from '../../../data/categories';
 import Button from '../../../components/Button';
 
 interface OptionsProps {
@@ -24,7 +24,7 @@ interface OptionsProps {
   quality: any;
 }
 
-const CreateListings = ({navigation}: any) => {
+const CreateListings = ({ navigation }: any) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [values, setValues] = useState<any>({});
@@ -49,14 +49,14 @@ const CreateListings = ({navigation}: any) => {
   const onDeleteImage = (image: any) => {
     setImages((list): any => {
       const filteredImages = list.filter(
-        img => img?.fileName !== image?.fileName,
+        (img: any) => img?.fileName !== image?.fileName,
       );
       return filteredImages;
     });
   };
 
   const onChange = (value: any, key: string) => {
-    setValues(val => ({...val, [key]: value}));
+    setValues((val: any) => ({ ...val, [key]: value }));
   };
 
   console.log(values);
@@ -85,7 +85,7 @@ const CreateListings = ({navigation}: any) => {
             </TouchableOpacity>
             {images?.map((image: any) => (
               <View style={styles.imageCont} key={image?.fileName}>
-                <Image style={styles.image} source={{uri: image?.uri}} />
+                <Image style={styles.image} source={{ uri: image?.uri }} />
                 <Pressable hitSlop={2} onPress={() => onDeleteImage(image)}>
                   <Entypo
                     style={styles.delete}

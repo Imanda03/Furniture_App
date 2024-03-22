@@ -1,6 +1,6 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import { styles } from './styles';
 
 interface ButtonProps {
   title: string;
@@ -8,7 +8,8 @@ interface ButtonProps {
   style?: any;
 }
 
-const Button = ({title, onPress, style}: ButtonProps) => {
+const Button = ({ title, onPress, style }: ButtonProps) => {
+
   return (
     <TouchableOpacity
       activeOpacity={0.6}
