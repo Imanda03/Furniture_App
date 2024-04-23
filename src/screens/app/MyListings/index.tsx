@@ -24,13 +24,12 @@ const MyListings = ({ navigation }: any) => {
   const [showDialog, setShowDialog] = useState(false)
   const renderItem = ({ item }: RenderProductItemProps) => {
     const onIconPressed = () => {
-      // console.log('first')
-      <DialogBox title='Product Delete' description='Are you sure you want to delete?' showDialog={true} setShowDialog={setShowDialog} />;
+      setShowDialog(!showDialog)
     }
     const onProductPress = () => {
       navigation.navigate('ProductDetails', { product: item });
     };
-    return <FavouriteItem icon={'trash'} onPress={onProductPress} {...item} onIconClick={onIconPressed} />;
+    return <FavouriteItem icon={'trash'} onPress={() => onIconPressed()} {...item} onIconClick={onIconPressed} />;
   };
 
   const goBack = () => navigation.goBack();
@@ -42,7 +41,7 @@ const MyListings = ({ navigation }: any) => {
         renderItem={renderItem}
         keyExtractor={item => String(item?.id)}
       />
-      <DialogBox title='Product Delete' description='Are you sure you want to delete?' showDialog={true} setShowDialog={setShowDialog} />
+      <DialogBox title='Product Delete' description='Are you sure you want to delete?' showDialog={showDialog} setShowDialog={setShowDialog} />
     </SafeAreaView>
   );
 };

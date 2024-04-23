@@ -4,7 +4,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {styles} from './styles';
 import {colors} from '../../utils/color';
 
-const AuthHeader = ({title, onBackPress}) => {
+interface AuthHeaderInterface{
+  title: string;
+  onBackPress?: (value: any) => void
+}
+
+const AuthHeader = ({title, onBackPress}: AuthHeaderInterface) => {
   return (
     <View style={styles.container}>
       <Pressable hitSlop={20} onPress={onBackPress}>

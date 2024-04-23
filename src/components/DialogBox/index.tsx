@@ -14,10 +14,12 @@ const DialogBox = ({ title, description, showDialog, setShowDialog }: dialogInte
   console.log('first')
   const handleCancel = () => {
     console.log("clicked on cancel");
+    if(setShowDialog) return setShowDialog(!showDialog)
   }
 
   const handleDelete = () => {
     console.log("clicked on delete");
+    if(setShowDialog) return setShowDialog(!showDialog)
   }
   return (
     <Dialog.Container visible={showDialog}>
